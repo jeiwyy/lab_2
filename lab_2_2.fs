@@ -13,8 +13,10 @@ let rec findVal ourInt finVal =
     match ourInt with
     | 0 -> false
     | _ ->
-        if finVal = ourInt%10 then true
-        else findVal (ourInt / 10) finVal
+        if finVal = ourInt % 10 then 
+            true
+        else 
+            findVal (ourInt / 10) finVal
 
 let sumList finVal acc elem = 
     match findVal elem finVal with
