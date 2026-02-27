@@ -38,4 +38,3 @@ let main args =
     let resList = List.fold sumListFold 0 ourList
     printfn "%A" resList
     0
-
