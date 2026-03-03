@@ -8,9 +8,6 @@ let rec createList inpList =
     | "0" -> inpList
     | _ -> createList (inpList @ [addVal])
 
-
-
-
 [<EntryPoint>]
 let main args = 
     printfn "Создание списка"
