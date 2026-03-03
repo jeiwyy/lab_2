@@ -7,7 +7,11 @@ let rec createList inpList =
     match addVal with
     | (true, intVal) when intVal > 0 -> 
         createList (inpList @ [intVal])
-    | _ -> inpList
+    | _ ->
+        if inpList = [] then
+            printfn "В списке должно быть хотя бы одно значение"
+            createList inpList
+        else inpList
 
 let rec findVal ourInt finVal = 
     match ourInt with
@@ -34,9 +38,9 @@ let rec inpFigure () =
 [<EntryPoint>]
 let main args = 
     let ourList = createList []
-    printfn "%A" ourList
+    printfn "Созданный список: %A" ourList
     let finVal = inpFigure ()
     let sumListFold = sumList finVal
     let resList = List.fold sumListFold 0 ourList
-    printfn "%A" resList
+    printfn "Сумма чисел содержащие '%i' = %A" finVal resList
     0

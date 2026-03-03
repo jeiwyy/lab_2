@@ -2,10 +2,10 @@
 open System
 
 let rec createList inpList = 
-    printf "Введите добавляемое значение(0 - конец): "
+    printf "Введите добавляемое значение(пустая строка - конец): "
     let addVal = Console.ReadLine()
     match addVal with
-    | "0" -> inpList
+    | "" -> inpList
     | _ -> createList (inpList @ [addVal])
 
 [<EntryPoint>]
