@@ -41,6 +41,6 @@ let main args =
     printfn "Созданный список: %A" ourList
     let finVal = inpFigure ()
     let sumListFold = sumList finVal
-    let resList = List.fold sumListFold 0 ourList
-    printfn "Сумма чисел содержащие '%i' = %A" finVal resList
+    let resInt = List.fold sumListFold 0 ourList
+    printfn "Сумма чисел содержащие '%i' = %i" finVal resInt
     0
