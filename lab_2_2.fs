@@ -1,11 +1,12 @@
 //Найти сумму тех элементов списка, в которых встречается заданная цифра.
+
 open System
 
 let rec createList inpList = 
-    printf "Введите добавляемое значение(не натур. число - конец): "
+    printf "Введите добавляемое значение(не число - конец): "
     let addVal = System.Int32.TryParse(Console.ReadLine())
     match addVal with
-    | (true, intVal) when intVal > 0 -> 
+    | (true, intVal) -> 
         createList (inpList @ [intVal])
     | _ ->
         if inpList = [] then
@@ -14,13 +15,15 @@ let rec createList inpList =
         else inpList
 
 let rec findVal ourInt finVal = 
+    let ten = if ourInt >= 0 then 10 else -10
     match ourInt with
     | 0 -> false
     | _ ->
-        if finVal = ourInt % 10 then 
+        if finVal = ourInt % ten then 
             true
         else 
-            findVal (ourInt / 10) finVal
+            findVal (ourInt / ten) finVal
+
 
 let sumList finVal acc elem = 
     match findVal elem finVal with
@@ -30,7 +33,7 @@ let sumList finVal acc elem =
 let rec inpFigure () = 
     printf "Введите цифру, которая должна быть в числе: "
     match System.Int32.TryParse(Console.ReadLine()) with
-    | (true, x) when x > 0 && x < 10 -> x
+    | (true, x) when x >= 0 && x < 10 -> x
     | _ ->
         printfn "Ошибка ввода."
         inpFigure ()
